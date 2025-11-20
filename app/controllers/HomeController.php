@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class HomeController extends Controller
 {
 
@@ -9,6 +7,8 @@ class HomeController extends Controller
     {
 
         // $movies = $this->model('Movie')->getMovies();
+
+        session_start();
 
         // kalo session user ada dan user adalah admin
         if (isset($_SESSION['user']) && $_SESSION['user']['isAdmin'] === 1) {

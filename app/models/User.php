@@ -15,8 +15,8 @@ class User extends Model
     public function getUser($email = "", $username = "")
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email = :email OR username = :usn');
-        $this->db->bind(':email', htmlspecialchars($email));
-        $this->db->bind(':usn', htmlspecialchars($username));
+        $this->db->bind('email', htmlspecialchars($email));
+        $this->db->bind('usn', htmlspecialchars($username));
         $this->db->execute();
         return $this->db->single();
     }
@@ -31,10 +31,10 @@ class User extends Model
 
         $query = 'INSERT INTO ' . $this->table . ' (username, email, password, isAdmin) VALUES (:usn, :email, :pass, :role)';
         $this->db->query($query);
-        $this->db->bind(':usn', $username);
-        $this->db->bind(':email', $email);
-        $this->db->bind(':pass', $password);
-        $this->db->bind(':role', $role);
+        $this->db->bind('usn', $username);
+        $this->db->bind('email', $email);
+        $this->db->bind('pass', $password);
+        $this->db->bind('role', $role);
 
         $this->db->execute();
 

@@ -11,7 +11,6 @@ class AuthController extends Controller
     {
         if ($_POST) {
             $user = $this->model('User')->getUser($_POST['emailInput'], $_POST['usernameInput']);
-            // Check if user is an array and if email/username exists
             if (is_array($user) && !empty($user['email']) && $user['email'] === htmlspecialchars($_POST['emailInput'])) {
                 $data['emailErr'] = 'email already used!';
                 $this->register($data);
